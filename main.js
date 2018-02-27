@@ -2,17 +2,13 @@ const searchCity = document.getElementById('searchCity');
 
 searchCity.addEventListener('change', function(){
   const searchValue = searchCity.value;
-  console.log(searchCity);
+  getTodaysWeather(searchValue);
 })
 
+getTodaysWeather("Stockholm");
 
-
-
-
-getTodaysWeather();
-
-function getTodaysWeather(){
-  fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm&APPID=20a5e7348daf2de3c94dc3bbb83eede5&units=metric&lang=se')
+function getTodaysWeather(city){
+  fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=20a5e7348daf2de3c94dc3bbb83eede5&units=metric&lang=se')
     .then(function(response){
       return response.json();
     })
