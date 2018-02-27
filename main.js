@@ -1,3 +1,14 @@
+const searchCity = document.getElementById('searchCity');
+
+searchCity.addEventListener('change', function(){
+  const searchValue = searchCity.value;
+  console.log(searchCity);
+})
+
+
+
+
+
 getTodaysWeather();
 
 function getTodaysWeather(){
@@ -20,8 +31,7 @@ function displayWeather(weatherData){
     <p> ${weatherData.weather[0].description} </p>
     <p> ${weatherData.main.temp} ℃ </p>
   `;
-  weatherInfoElement
-    .insertAdjacentHTML('afterbegin', weatherInfo);
+  weatherInfoElement.innerHTML = weatherInfo;
 }
 
 
