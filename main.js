@@ -22,8 +22,10 @@ function getTodaysWeather(city){
 
 
 function displayWeather(weatherData){
+  console.log(weatherData);
   const weatherInfoElement = document.getElementById('weatherInfo');
   let weatherInfo = `
+    <img src="http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png" />
     <p> ${weatherData.weather[0].description} </p>
     <p> ${weatherData.main.temp} ℃ </p>
   `;
