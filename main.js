@@ -6,10 +6,22 @@ function getTodaysWeather(){
       return response.json();
     })
     .then(function(weatherData){
-      console.log(weatherData.weather[0].description);
-      console.log(weatherData.main.temp)
+      displayWeather(weatherData);
     })
     .catch(function(error){
       console.log(error);
     })
 }
+
+
+function displayWeather(weatherData){
+  const weatherInfoElement = document.getElementById('weatherInfo');
+  let weatherInfo = `
+    <p> ${weatherData.weather[0].description} </p>
+    <p> ${weatherData.main.temp} ℃ </p>
+  `;
+  weatherInfoElement
+    .insertAdjacentHTML('afterbegin', weatherInfo);
+}
+
+
