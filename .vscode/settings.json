@@ -1,0 +1,8 @@
+{
+  "workbench.colorTheme": "Bimbo Theme",
+  "git.enabled": false,
+  "files.exclude": {
+    ".vscode": true
+  },
+  "eslint.enable": false
+}
