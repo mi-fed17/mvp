@@ -7,9 +7,16 @@ searchCity.addEventListener('change', () => {
   getTodaysWeather(searchValue);
 })
 
-getTodaysWeather("Stockholm");
+getTodaysWeather();
 
-function getTodaysWeather(city){
+// Expects a parameter!!!
+function getTodaysWeather(city = "Stockholm"){
+  // Only if value isn't present
+  // if(!city){
+  //   city = "Stockholm";
+  // }
+  // // Ternary operator
+  // city ? "Stockholm" : city;
   fetch(`https://api.openweathermap.org/data/2.5/${weatherParam}?q=${city}&APPID=${appID}&units=metric&lang=se`)
     .then((response) => response.json())
     .then((weatherData) =>  {
