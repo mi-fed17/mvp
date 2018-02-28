@@ -1,6 +1,6 @@
 const searchCity = document.getElementById('searchCity');
 
-searchCity.addEventListener('change', function(){
+searchCity.addEventListener('change', () => {
   const searchValue = searchCity.value;
   getTodaysWeather(searchValue);
 })
@@ -9,13 +9,11 @@ getTodaysWeather("Stockholm");
 
 function getTodaysWeather(city){
   fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=20a5e7348daf2de3c94dc3bbb83eede5&units=metric&lang=se')
-    .then(function(response){
-      return response.json();
+    .then((response) => response.json())
+    .then((weatherData) =>  {
+      displayWeather(weatherData)
     })
-    .then(function(weatherData){
-      displayWeather(weatherData);
-    })
-    .catch(function(error){
+    .catch((error) => {
       console.log(error);
     })
 }
