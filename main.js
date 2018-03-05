@@ -7,14 +7,14 @@ searchCity.addEventListener('change', () => {
   getTodaysWeather(searchValue);
 })
 
-//getTodaysWeather();
+getTodaysWeather();
 
 // Expects a parameter!
 function getTodaysWeather(city = "Stockholm"){
-  fetch(`https://api.openweathermap.org/data/2.5/${weatherParam}?q=${city}&APPID=${appID}&units=metric&lang=se`)
+  fetch(`fetch_weather.php`)
     .then((response) => response.json())
     .then((weatherData) =>  {
-      displayWeather(weatherData)
+      displayWeather(JSON.parse(weatherData));
     })
     .catch((error) => {
       console.log(error);
@@ -35,8 +35,28 @@ function displayWeather(weatherData){
   weatherInfoElement.innerHTML = weatherInfo;
 }
 
+fetchTodos();
 
+function fetchTodos(){
+  fetch('fetch_todos.php')
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    })
+}
 
+function postTodo(){
+  const formData = new FormData();
+  formData.append('text', ' Buy A house');
+  formData.append('complete', false);
+  fetch('fetch_todos.php',{
+    method: 'POST',
+    body: formData
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+  })
+}
 
-
-
+postTodo();
